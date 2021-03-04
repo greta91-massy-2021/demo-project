@@ -2,6 +2,7 @@ package fr.baobab.greta91demo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.complex_layout);
         final Button button = (Button)findViewById(R.id.button);//récupère le bouton 1
         final Button button2 = (Button)findViewById(R.id.button2);//récupère le bouton 2
+        final Button button3 = (Button)findViewById(R.id.button3);//récupère le bouton 3
         //Méthode 1
         /*button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Méthode 3
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
     }
 
     @Override
@@ -49,6 +52,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ImageView iv = (ImageView) findViewById(R.id.imageView);
                 iv.setImageResource(R.drawable.paris);
             break;
+            case R.id.button3:
+                //traitement pour le bouton 3
+                //créer un intent explicite
+                Intent intent = new Intent(this, SecondActivity.class);
+                startActivity(intent);
+                break;
             default:
                 //traitement par défaut
         }
