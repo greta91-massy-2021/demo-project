@@ -1,5 +1,6 @@
 package fr.baobab.greta91demo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    public static final int SECOND_ACTIVITY = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final Button button3 = (Button)findViewById(R.id.button3);//récupère le bouton 3
         final Button button4 = (Button)findViewById(R.id.button4);//récupère le bouton 4
         final Button button5 = (Button)findViewById(R.id.button5);//récupère le bouton 5
+        final Button button6 = (Button)findViewById(R.id.button6);//récupère le bouton 6
         //Méthode 1
         /*button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
         button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
     }
 
     @Override
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //créer un intent explicite
                 Intent intent = new Intent(this, SecondActivity.class);
                 startActivity(intent);
+                //finish();
                 break;
             case R.id.button4:
                 //traitement pour le bouton 4
@@ -79,12 +85,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                             "fr.baobab.greta91demo2.MainActivity");
                 startActivity(intent3);
                 break;
+            case R.id.button6:
+                //traitement pour le bouton 6
+                //créer un intent explicite
+                Intent intentAvecRes = new Intent(this, SecondActivity.class);
+                startActivityForResult(intentAvecRes, SECOND_ACTIVITY);
+                break;
             default:
                 //traitement par défaut
         }
-
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_CANCELED) return;
+        switch (requestCode){
+            case SECOND_ACTIVITY:
+                if(null != data){
+                    int id = data.getIntExtra("id", 0);
+                    String name = data.getStringExtra("name");
+                    //afficher une notification
+                    String msg = "produit "+ name + "a été sauvegardé avec l'id :" + id;
+                    Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+                }
+                break;
+            default:
+                //traitement par défaut
+        }
+    }
     /*private class MyListener implements View.OnClickListener{
         @Override
         public void onClick(View v) {
