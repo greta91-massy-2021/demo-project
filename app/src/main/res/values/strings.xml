@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">greta91 demo</string>
+    <string name="hello_msg">Hello</string>
+    <string name="hello_btn">Click me</string>
+</resources>

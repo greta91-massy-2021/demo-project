@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">greta91 demo</string>
+    <string name="hello_msg">Bonjour</string>
+    <string name="hello_btn">Cliquez sur moi</string>
+</resources>
