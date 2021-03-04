@@ -3,6 +3,7 @@ package fr.baobab.greta91demo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final Button button = (Button)findViewById(R.id.button);//récupère le bouton 1
         final Button button2 = (Button)findViewById(R.id.button2);//récupère le bouton 2
         final Button button3 = (Button)findViewById(R.id.button3);//récupère le bouton 3
+        final Button button4 = (Button)findViewById(R.id.button4);//récupère le bouton 4
         //Méthode 1
         /*button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +60,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //créer un intent explicite
                 Intent intent = new Intent(this, SecondActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.button4:
+                //traitement pour le bouton 4
+                //créer un intent implicite
+                Uri uri = Uri.parse("https://google.fr");
+                Intent intent2 = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent2);
                 break;
             default:
                 //traitement par défaut
