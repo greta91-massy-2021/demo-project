@@ -51,7 +51,7 @@
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/seekBar"
                 android:text="TextView" />
 
@@ -69,6 +69,13 @@
                 android:layout_above="@id/textView"
                 android:layout_toRightOf="@id/button3"
                 android:text="lancer activité implicite" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView"
+                android:text="lancer activité app2" />
         </RelativeLayout>
     </ScrollView>
 

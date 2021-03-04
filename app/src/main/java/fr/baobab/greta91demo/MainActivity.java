@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final Button button2 = (Button)findViewById(R.id.button2);//récupère le bouton 2
         final Button button3 = (Button)findViewById(R.id.button3);//récupère le bouton 3
         final Button button4 = (Button)findViewById(R.id.button4);//récupère le bouton 4
+        final Button button5 = (Button)findViewById(R.id.button5);//récupère le bouton 5
         //Méthode 1
         /*button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
+        button5.setOnClickListener(this);
     }
 
     @Override
@@ -67,6 +69,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Uri uri = Uri.parse("https://google.fr");
                 Intent intent2 = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent2);
+                break;
+            case R.id.button5:
+                //traitement pour le bouton 5
+                //créer un intent explicite
+                Intent intent3 = new Intent(Intent.ACTION_MAIN);
+                intent3.addCategory(Intent.CATEGORY_LAUNCHER);
+                intent3.setClassName("fr.baobab.greta91demo2",
+                                            "fr.baobab.greta91demo2.MainActivity");
+                startActivity(intent3);
                 break;
             default:
                 //traitement par défaut
