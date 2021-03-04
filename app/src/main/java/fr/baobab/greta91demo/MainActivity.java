@@ -102,10 +102,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (requestCode){
             case SECOND_ACTIVITY:
                 if(null != data){
-                    int id = data.getIntExtra("id", 0);
-                    String name = data.getStringExtra("name");
+                    int res = data.getIntExtra(SecondActivity.SECOND_ACTIVITY_RES, 0);
                     //afficher une notification
-                    String msg = "produit "+ name + "a été sauvegardé avec l'id :" + id;
+                    String msg = "Voici le résultat " + res;
                     Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
                 }
                 break;
