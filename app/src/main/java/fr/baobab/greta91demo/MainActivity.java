@@ -17,6 +17,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     public static final int SECOND_ACTIVITY = 1;
     public static final String TAG = "MainActivity";
+    private int resSecondActivity = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,18 +63,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Log.i(TAG, "dans onRestoreInstanceState");
+        this.resSecondActivity = savedInstanceState.getInt("resSecondActivity");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.i(TAG, "dans onResume");
+        //INTERDIT - à éviter !
+        /*for (int i=0; i< 1000000000; i++){
+            Log.i("opération longue", i+"");
+        }*/
+        String msg = "Voici le résultat " + this.resSecondActivity;
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Log.i(TAG, "dans onSaveInstanceState");
+        outState.putInt("resSecondActivity", this.resSecondActivity);
     }
 
     @Override
@@ -155,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case SECOND_ACTIVITY:
                 if(null != data){
                     int res = data.getIntExtra(SecondActivity.SECOND_ACTIVITY_RES, 0);
+                    this.resSecondActivity = res;
                     //afficher une notification
                     String msg = "Voici le résultat " + res;
                     Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
